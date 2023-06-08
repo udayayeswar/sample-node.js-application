@@ -12,15 +12,15 @@
 #      yum:
 #        name: python3-apt
 #        state: present
-
-- name: Deploy Node.js HTTP server
-  hosts: localhost
-  become: yes
-  tasks:
-    - name: Install Node.js
-      apt:
-        name: nodejs
-        state: present
+#
+#- name: Deploy Node.js HTTP server
+#  hosts: localhost
+#  become: yes
+#  tasks:
+#    - name: Install Node.js
+#      apt:
+#        name: nodejs
+#        state: present
 #
 #- name: Create destination directory
 #  hosts: localhost
@@ -30,31 +30,62 @@
 #        path: /path/on/remote/server/http_server.js
 #        state: directory
 #        mode: 0755
+#
+#- name: Copy Node.js script
+#  hosts: localhost
+#  tasks:
+#     -name: copy file
+#     copy:
+#       content: |
+#          var http = require("http");
+#
+#          http.createServer(function (request, response) {
+#            // Send the HTTP header
+#            response.writeHead(200, {'Content-Type': 'text/plain'});
+#
+#            // Send the response body as "Hello World"
+#            response.end('Hello World\n');
+#          }).listen(8081);
+#
+#          // Console will print the message
+#          console.log('Server running at http://127.0.0.1:8080/');
+#  dest: /path/on/remote/server/http_server.js
+#
+#- name: Start Node.js HTTP server
+#  command: node /path/on/remote/server/http_server.js
+#  async: 300
+#  poll: 0
 
-- name: Copy Node.js script
+- name: Deploy Node.js HTTP server
   hosts: localhost
+  become: yes
   tasks:
-     -name: copy file
-     copy:
-       content: |
-          var http = require("http");
+    - name: Copy Node.js script
+      copy:
+        src: server.js  # Path to your server.js file
+        dest: /path/to/destination/server.js  # Destination path on the remote server
+        mode: 0755  # Set appropriate permissions for the file
 
-          http.createServer(function (request, response) {
-            // Send the HTTP header
-            response.writeHead(200, {'Content-Type': 'text/plain'});
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
 
-            // Send the response body as "Hello World"
-            response.end('Hello World\n');
-          }).listen(8081);
+    - name: Install npm
+      apt:
+        name: npm
+        state: present
 
-          // Console will print the message
-          console.log('Server running at http://127.0.0.1:8080/');
-  dest: /path/on/remote/server/http_server.js
+    - name: Install required npm packages
+      npm:
+        name: http
+        global: yes
 
-- name: Start Node.js HTTP server
-  command: node /path/on/remote/server/http_server.js
-  async: 300
-  poll: 0
+    - name: Start Node.js server
+      command: node /path/to/destination/server.js
+      async: 300
+      poll: 0
+
 
 
 
