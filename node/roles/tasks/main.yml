@@ -32,8 +32,11 @@
         mode: 0755
 
 - name: Copy Node.js script
-  copy:
-  content: |
+  hosts: localhost
+  tasks:
+     -name: copy file
+     copy:
+       content: |
           var http = require("http");
 
           http.createServer(function (request, response) {
