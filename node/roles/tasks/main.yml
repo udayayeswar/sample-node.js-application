@@ -27,7 +27,7 @@
   tasks:
     - name: Ensure the directory exists
       file:
-        path: /path/on/remote/server
+        path: /path/on/remote/server/http_server.js
         state: directory
         mode: 0755
 
