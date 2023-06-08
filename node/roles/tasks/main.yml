@@ -1,6 +1,6 @@
 ---
 - name: Deploy Node.js HTTP server
-  hosts: target_servers
+  hosts: localhost
   become: yes
   tasks:
     - name: Install Node.js
