@@ -2,6 +2,14 @@
 - name: Deploy Node.js HTTP server
   hosts: localhost
   become: yes
+    - name: Install a package using the appropriate package manager
+            hosts: localhost
+            tasks:
+              - name: Install the package
+                package:
+                  name: your_package
+                  state: present
+
   tasks:
     - name: Install Node.js
       apt:
