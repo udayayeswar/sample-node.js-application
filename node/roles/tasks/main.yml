@@ -9,12 +9,10 @@
       package:
           name: your_package
           state: present
-
-
-- name: Install Node.js
-  apt:
-      name: nodejs
-      state: present
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
 
 - name: Copy Node.js script
   copy:
