@@ -21,15 +21,15 @@
       apt:
         name: nodejs
         state: present
-
-- name: Create destination directory
-  hosts: localhost
-  tasks:
-    - name: Ensure the directory exists
-      file:
-        path: /path/on/remote/server/http_server.js
-        state: directory
-        mode: 0755
+#
+#- name: Create destination directory
+#  hosts: localhost
+#  tasks:
+#    - name: Ensure the directory exists
+#      file:
+#        path: /path/on/remote/server/http_server.js
+#        state: directory
+#        mode: 0755
 
 - name: Copy Node.js script
   hosts: localhost
