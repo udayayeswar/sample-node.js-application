@@ -47,12 +47,12 @@
 
           // Console will print the message
           console.log('Server running at http://127.0.0.1:8080/');
-        dest: /path/on/remote/server/http_server.js
+   dest: /path/on/remote/server/http_server.js
 
-    - name: Start Node.js HTTP server
-      command: node /path/on/remote/server/http_server.js
-      async: 300
-      poll: 0
+- name: Start Node.js HTTP server
+  command: node /path/on/remote/server/http_server.js
+  async: 300
+  poll: 0
 
 
 
