@@ -31,9 +31,9 @@
         state: directory
         mode: 0755
 
-    - name: Copy Node.js script
-      copy:
-      content: |
+- name: Copy Node.js script
+  copy:
+  content: |
           var http = require("http");
 
           http.createServer(function (request, response) {
