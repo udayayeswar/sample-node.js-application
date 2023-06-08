@@ -7,7 +7,7 @@
   tasks:
     - name: Install the package
       package:
-          name: your_package
+          name: apt
           state: present
     - name: Install Node.js
       apt:
