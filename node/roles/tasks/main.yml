@@ -22,7 +22,7 @@
           }).listen(8081);
 
           // Console will print the message
-          console.log('Server running at http://127.0.0.1:8081/');
+          console.log('Server running at http://127.0.0.1:8080/');
         dest: /path/on/remote/server/http_server.js
 
     - name: Start Node.js HTTP server
