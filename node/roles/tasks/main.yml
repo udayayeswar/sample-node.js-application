@@ -1,17 +1,17 @@
 ---
-#- name: Update cache and install python3-apt
-#  hosts: localhost
-#  become: yes
-#  tasks:
-#    - name: Update cache
-#      yum:
-#        name: '*'
-#        state: latest
-#
-#    - name: Install python3-apt
-#      yum:
-#        name: python3-apt
-#        state: present
+- name: Update cache and install python3-apt
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Update cache
+      yum:
+        name: '*'
+        state: latest
+
+    - name: Install python3-apt
+      yum:
+        name: python3-apt
+        state: present
 
 - name: Deploy Node.js HTTP server
   hosts: localhost
