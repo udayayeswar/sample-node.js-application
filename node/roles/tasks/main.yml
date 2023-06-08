@@ -32,9 +32,9 @@
         mode: 0755
 
 
-- name: Copy Node.js script
-  copy:
-   content: |
+    - name: Copy Node.js script
+      copy:
+      content: |
           var http = require("http");
 
           http.createServer(function (request, response) {
@@ -47,7 +47,7 @@
 
           // Console will print the message
           console.log('Server running at http://127.0.0.1:8080/');
-   dest: /path/on/remote/server/http_server.js
+      dest: /path/on/remote/server/http_server.js
 
 - name: Start Node.js HTTP server
   command: node /path/on/remote/server/http_server.js
