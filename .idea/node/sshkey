@@ -1,0 +1,5 @@
+Host target_servers
+    HostName 54.227.91.153
+    User centos
+    port 22
+    StrictHostkeyChecking no

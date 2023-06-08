@@ -1,0 +1,56 @@
+---
+- name: Deploy Node.js HTTP server
+  hosts: target_servers
+  become: yes
+  tasks:
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Copy Node.js script
+      copy:
+        content: |
+          var http = require("http");
+
+          http.createServer(function (request, response) {
+            // Send the HTTP header
+            response.writeHead(200, {'Content-Type': 'text/plain'});
+
+            // Send the response body as "Hello World"
+            response.end('Hello World\n');
+          }).listen(8081);
+
+          // Console will print the message
+          console.log('Server running at http://127.0.0.1:8081/');
+        dest: /path/on/remote/server/http_server.js
+
+    - name: Start Node.js HTTP server
+      command: node /path/on/remote/server/http_server.js
+      async: 300
+      poll: 0
+
+
+
+
+
+
+
+
+
+
+
+#  var http = require("http");
+#
+#    http.createServer(function (request, response) {
+#    // Send the HTTP header
+#  // HTTP Status: 200 : OK
+#  // Content Type: text/plain
+#  response.writeHead(200, {'Content-Type': 'text/plain'});
+#
+#    // Send the response body as "Hello World"
+#    response.end('Hello World\n');
+#  }).listen(8081);
+#
+#    // Console will print the message
+#    console.log('Server running at http://127.0.0.1:8081/');
