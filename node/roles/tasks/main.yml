@@ -1,6 +1,6 @@
 ---
 - name: Deploy Node.js HTTP server
-  hosts: target_server
+  hosts: target_servers
   become: yes
   tasks:
     - name: Copy Node.js script
