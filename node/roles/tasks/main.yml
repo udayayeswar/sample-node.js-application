@@ -6,7 +6,7 @@
     - name: Copy Node.js script
       copy:
         src: server.js  # Path to your server.js file
-        dest: /etc/server. # Destination path on the remote server
+        dest: /opt/myapp/server.js. # Destination path on the remote server
         mode: 0755  # Set appropriate permissions for the file
 
     - name: Install Node.js
