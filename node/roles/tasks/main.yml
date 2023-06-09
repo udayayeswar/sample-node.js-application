@@ -1,12 +1,12 @@
 ---
 - name: Deploy Node.js HTTP server
-  hosts: localhost
+  hosts: target_server
   become: yes
   tasks:
     - name: Copy Node.js script
       copy:
         src: server.js  # Path to your server.js file
-        dest: /path/to/destination/server.js  # Destination path on the remote server
+        dest: /etc/server. # Destination path on the remote server
         mode: 0755  # Set appropriate permissions for the file
 
     - name: Install Node.js
